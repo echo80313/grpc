@@ -588,7 +588,7 @@ ServerAddressList EdsLb::CreateChildPolicyAddressesLocked() {
         grpc_arg new_arg = MakeHierarchicalPathArg(hierarchical_path);
         grpc_channel_args* args =
             grpc_channel_args_copy_and_add(address.args(), &new_arg, 1);
-        addresses.emplace_back(address.address(), args);
+        addresses.emplace_back(address.address(), args, address.lb_weight());
       }
     }
   }
@@ -701,6 +701,7 @@ void EdsLb::UpdateChildPolicyLocked() {
   update_args.config = CreateChildPolicyConfigLocked();
   if (update_args.config == nullptr) return;
   update_args.addresses = CreateChildPolicyAddressesLocked();
+
   update_args.args = CreateChildPolicyArgsLocked(args_);
   if (child_policy_ == nullptr) {
     child_policy_ = CreateChildPolicyLocked(update_args.args);
@@ -868,7 +869,7 @@ class EdsLbFactory : public LoadBalancingPolicyFactory {
     if (it == json.object_value().end()) {
       endpoint_picking_policy = Json::Array{
           Json::Object{
-              {"round_robin", Json::Object()},
+              {"weighted_round_robin", Json::Object()},
           },
       };
     } else {

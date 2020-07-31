@@ -75,7 +75,7 @@ HierarchicalAddressMap MakeHierarchicalAddressMap(
     grpc_arg new_arg = MakeHierarchicalPathArg(remaining_path);
     grpc_channel_args* new_args = grpc_channel_args_copy_and_add_and_remove(
         address.args(), &name_to_remove, 1, &new_arg, 1);
-    target_list.emplace_back(address.address(), new_args);
+    target_list.emplace_back(address.address(), new_args, address.lb_weight());
   }
   return result;
 }
