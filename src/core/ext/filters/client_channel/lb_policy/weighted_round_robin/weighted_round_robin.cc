@@ -16,7 +16,7 @@
  *
  */
 
-/** Round Robin Policy.
+/** Weighted Round Robin Policy.
  *
  * Before every pick, the \a get_next_ready_subchannel_index_locked function
  * returns the p->subchannel_list->subchannels index for next subchannel,
@@ -90,7 +90,7 @@ class WeightedRoundRobin : public LoadBalancingPolicy {
       return last_connectivity_state_;
     }
 
-    uint32_t lb_weight() const {
+    uint32_t EndpointWeight() const {
       return lb_weight_;
     }
 
@@ -245,7 +245,7 @@ WeightedRoundRobin::Picker::Picker(WeightedRoundRobin* parent,
     WeightedRoundRobinSubchannelData* sd = subchannel_list->subchannel(i);
     if (sd->connectivity_state() == GRPC_CHANNEL_READY) {
       subchannels_.push_back(sd->subchannel()->Ref());
-      edf_scheduler_.add(sd->lb_weight() , sd->subchannel()->Ref());
+      edf_scheduler_.add(sd->EndpointWeight() , sd->subchannel()->Ref());
     }
   }
 }

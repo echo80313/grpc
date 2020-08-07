@@ -148,6 +148,7 @@ Gem::Specification.new do |s|
   s.files += %w( src/core/ext/filters/client_channel/lb_policy/priority/priority.cc )
   s.files += %w( src/core/ext/filters/client_channel/lb_policy/round_robin/round_robin.cc )
   s.files += %w( src/core/ext/filters/client_channel/lb_policy/subchannel_list.h )
+  s.files += %w( src/core/ext/filters/client_channel/lb_policy/weighted_round_robin/weighted_round_robin.cc )
   s.files += %w( src/core/ext/filters/client_channel/lb_policy/weighted_target/weighted_target.cc )
   s.files += %w( src/core/ext/filters/client_channel/lb_policy/xds/cds.cc )
   s.files += %w( src/core/ext/filters/client_channel/lb_policy/xds/eds.cc )

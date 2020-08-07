@@ -2015,6 +2015,7 @@ add_library(grpc_unsecure
   src/core/ext/filters/client_channel/lb_policy/pick_first/pick_first.cc
   src/core/ext/filters/client_channel/lb_policy/priority/priority.cc
   src/core/ext/filters/client_channel/lb_policy/round_robin/round_robin.cc
+  src/core/ext/filters/client_channel/lb_policy/weighted_round_robin/weighted_round_robin.cc
   src/core/ext/filters/client_channel/lb_policy/weighted_target/weighted_target.cc
   src/core/ext/filters/client_channel/lb_policy/xds/cds.cc
   src/core/ext/filters/client_channel/lb_policy/xds/eds.cc
