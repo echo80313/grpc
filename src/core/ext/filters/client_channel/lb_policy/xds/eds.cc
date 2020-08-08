@@ -588,7 +588,7 @@ ServerAddressList EdsLb::CreateChildPolicyAddressesLocked() {
         grpc_arg new_arg = MakeHierarchicalPathArg(hierarchical_path);
         grpc_channel_args* args =
             grpc_channel_args_copy_and_add(address.args(), &new_arg, 1);
-        addresses.emplace_back(address.address(), args, address.lb_weight());
+        addresses.emplace_back(address.address(), args, address.lbWeight());
       }
     }
   }

@@ -1106,7 +1106,7 @@ void XdsClient::ChannelState::AdsCallState::AcceptEdsUpdate(
                     "[xds_client %p] Priority %" PRIuPTR ", locality %" PRIuPTR
                     " %s, server address %" PRIuPTR ": %s weight %u" ,
                     xds_client(), priority, locality_count,
-                    locality.name->AsHumanReadableString(), i, ipport.c_str(), locality.serverlist[i].lb_weight());
+                    locality.name->AsHumanReadableString(), i, ipport.c_str(), locality.serverlist[i].lbWeight());
           }
           ++locality_count;
         }

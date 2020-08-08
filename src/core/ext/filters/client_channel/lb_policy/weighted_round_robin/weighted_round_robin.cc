@@ -23,7 +23,6 @@
  * respecting the relative order of the addresses provided upon creation or
  * updates. Note however that updates will start picking from the beginning of
  * the updated list. */
-
 #include <grpc/support/port_platform.h>
 
 #include <stdlib.h>
@@ -83,7 +82,7 @@ class WeightedRoundRobin : public LoadBalancingPolicy {
             subchannel_list,
         const ServerAddress& address,
         RefCountedPtr<SubchannelInterface> subchannel)
-        : SubchannelData(subchannel_list, address, std::move(subchannel)), lb_weight_(address.lb_weight()) {
+        : SubchannelData(subchannel_list, address, std::move(subchannel)), lb_weight_(address.lbWeight()) {
         }
 
     grpc_connectivity_state connectivity_state() const {

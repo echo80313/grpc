@@ -76,7 +76,7 @@ class ServerAddress {
 
   const grpc_resolved_address& address() const { return address_; }
   const grpc_channel_args* args() const { return args_; }
-  const uint32_t lb_weight() const { return lb_weight_; }
+  uint32_t lbWeight() const { return lb_weight_; }
 
  private:
   grpc_resolved_address address_;
